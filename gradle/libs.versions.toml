@@ -1,0 +1,29 @@
+[versions]
+# Define versions for libraries
+android-gradle-plugin = "8.4.2"  # Adjust based on your Gradle version
+appcompat = "1.7.0"
+material = "1.12.0"
+activity = "1.10.1"
+constraintlayout = "2.2.1"
+junit = "4.13.2"
+ext-junit = "1.2.1"
+espresso-core = "3.6.1"
+card-stack-view = "2.3.4"
+
+[libraries]
+# AndroidX and Material
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+# Testing
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "ext-junit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+
+# CardStackView
+card-stack-view = { group = "com.github.yuyakaido", name = "CardStackView", version.ref = "card-stack-view" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }

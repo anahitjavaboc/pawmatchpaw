@@ -1,33 +1,30 @@
 package com.anahit.pawmatch;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
-
-import com.anahit.pawmatch.databinding.ActivityMainBinding; // Import the generated binding class
-import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding; // Use private for encapsulation
+
+    private FirebaseAuth auth;
+    private MaterialButton logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_main);
 
-        // Ensure the `card` class exists
-        List<card> cards = new ArrayList<>();
-        cards.add(new card("Balik", ResourcesCompat.getDrawable(getResources(), R.drawable.shun1, null)));
-        cards.add(new card("Chay", ResourcesCompat.getDrawable(getResources(), R.drawable.shun2, null)));
-        cards.add(new card("Aghasik", ResourcesCompat.getDrawable(getResources(), R.drawable.shun3, null)));
-        cards.add(new card("Naxshun", ResourcesCompat.getDrawable(getResources(), R.drawable.shun4, null)));
-        cards.add(new card("Gjuk", ResourcesCompat.getDrawable(getResources(), R.drawable.shun5, null)));
-        card_adapter adapter = new card_adapter(cards);
-        binding.cardStack.setLayoutManager(new CardStackLayoutManager(getApplicationContext()));
-        binding.cardStack.setAdapter(adapter);
+        auth = FirebaseAuth.getInstance();
+
+        logoutButton = findViewById(R.id.logoutButton);
+
+        logoutButton.setOnClickListener(v -> {
+            auth.signOut();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
+        });
     }
 }

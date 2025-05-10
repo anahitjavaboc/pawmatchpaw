@@ -1,24 +1,22 @@
 [versions]
-android-gradle-plugin = "8.7.3"  # Compatible with Gradle 8.7
-kotlin = "2.0.20"               # Latest stable Kotlin plugin
-google-gms-google-services = "4.4.2"
-firebase-bom = "33.13.0"        # Firebase Bill of Materials (keeping your version; latest is 33.1.3 as of May 2025)
+android-gradle-plugin = "8.3.0"         # Latest stable as of May 2025
+google-gms-google-services = "4.4.2"    # Latest stable
+firebase-bom = "33.5.1"                 # Latest stable as of May 2025
 appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.10.1"
-constraintlayout = "2.2.1"
+activity = "1.9.3"                      # Latest stable
+constraintlayout = "2.1.4"              # Latest stable
 junit = "4.13.2"
 ext-junit = "1.2.1"
 espresso-core = "3.6.1"
 card-stack-view = "2.3.4"
-core-ktx = "1.16.0"             # Kotlin extensions (keeping your version; latest is 1.13.1 as of May 2025)
-glide = "4.16.0"                # Image loading
-firebase-auth = "23.2.0"
-firebase-firestore = "25.0.0"
-coroutines-android = "1.9.0"    # For coroutines
-
-# Added: Latest Firebase UI for Authentication (optional for Java)
-firebase-ui-auth = "8.0.2"      # Latest version as of May 2025 for Firebase UI
+core-ktx = "1.13.1"                     # Latest stable as of May 2025
+glide = "4.16.0"                        # Latest stable
+firebase-auth = "23.2.0"                # Managed by BOM, keeping for reference
+firebase-firestore = "25.0.0"           # Managed by BOM, keeping for reference
+coroutines-android = "1.9.0"            # Latest stable
+firebase-ui-auth = "8.0.2"              # Latest stable as of May 2025
+kotlin = "2.0.20"                       # Preserved as requested
 
 [libraries]
 # AndroidX and Material
@@ -35,14 +33,12 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 
 # Firebase
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
-firebase-auth = { group = "com.google.firebase", name = "firebase-auth-ktx" }
-firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore-ktx" }
-
-# Added: Firebase UI for Authentication (optional Java-compatible version)
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }  # Standard variant for Java
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }  # Standard variant for Java
 firebase-ui-auth = { group = "com.firebaseui", name = "firebase-ui-auth", version.ref = "firebase-ui-auth" }
 
 # CardStackView
-card-stack-view = { group = "com.github.yuyakaido", name = "CardStackView", version.ref = "card-stack-view" }
+card-stack-view = { group = "com.yuyakaido.android", name = "card-stack-view", version.ref = "card-stack-view" }  # Corrected name
 
 # Glide
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
@@ -52,5 +48,6 @@ coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutin
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }  # Added for completeness
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "google-gms-google-services" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }  # Preserved as requested

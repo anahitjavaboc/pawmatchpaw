@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.anahit.pawmatch"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Required Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
@@ -14,7 +16,7 @@
         android:theme="@style/Theme.Pawmatch"
         tools:targetApi="31">
 
-        <!-- SplashActivity as the launcher activity with a custom theme -->
+
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -25,21 +27,15 @@
             </intent-filter>
         </activity>
 
-        <!-- Other activities -->
-        <activity
-            android:name=".SignUpActivity"
-            android:exported="false" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
-        <activity
-            android:name=".OwnerProfileCreationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PetProfileCreationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+
+        <!-- Other activities -->
+        <activity android:name=".SignUpActivity" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".OwnerProfileCreationActivity" android:exported="false" />
+        <activity android:name=".PetProfileCreationActivity" android:exported="false" />
     </application>
 </manifest>

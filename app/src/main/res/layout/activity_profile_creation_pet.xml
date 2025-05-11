@@ -35,15 +35,19 @@
                 android:layout_marginBottom="16dp" />
 
             <!-- Upload Button -->
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/uploadImageButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/upload_pet_photo"
-                android:backgroundTint="@color/splash_background"
-                android:textColor="@android:color/white"
                 android:layout_marginBottom="16dp"
+                app:cornerRadius="6dp"
+                android:backgroundTint="@color/splash_background"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:text="@string/upload_pet_photo"
+                android:textColor="@android:color/white"
                 android:textSize="18sp" />
+
 
             <!-- Pet Name -->
             <TextView
@@ -125,15 +129,19 @@
                 android:layout_marginBottom="16dp" />
 
             <!-- Save Profile Button -->
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/saveProfileButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/save_profile"
+                android:layout_marginBottom="16dp"
+                app:cornerRadius="6dp"
                 android:backgroundTint="@color/splash_background"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:text="@string/save_profile"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:layout_marginBottom="16dp" />
+                android:textSize="18sp" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

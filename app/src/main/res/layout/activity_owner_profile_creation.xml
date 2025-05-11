@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:padding="32dp"
-        android:gravity="center">
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
+            android:paddingHorizontal="16dp"
             android:layout_gravity="center">
 
             <!-- Owner Name -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/your_name"
+                android:text="Owner Name"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_marginBottom="8dp" />
@@ -31,6 +37,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
                 android:hint="@string/enter_your_name"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
                 android:textSize="16sp"
                 android:layout_marginBottom="16dp" />
 
@@ -38,7 +46,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/your_age"
+                android:text="Owner Age"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_marginBottom="8dp" />
@@ -49,6 +57,7 @@
                 android:layout_height="49dp"
                 android:hint="@string/enter_your_age"
                 android:inputType="number"
+                android:imeOptions="actionNext"
                 android:textSize="16sp"
                 android:layout_marginBottom="16dp" />
 
@@ -56,7 +65,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/your_gender"
+                android:text="Owner Gender"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_marginBottom="8dp" />
@@ -67,16 +76,20 @@
                 android:layout_height="49dp"
                 android:layout_marginBottom="16dp" />
 
-            <!-- Save Owner Profile Button -->
-            <Button
+            <!-- Save and Continue Button -->
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/saveOwnerProfileButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/save_and_continue"
+                android:layout_marginBottom="16dp"
+                app:cornerRadius="6dp"
                 android:backgroundTint="@color/splash_background"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:text="@string/save_and_continue"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:layout_marginBottom="16dp" />
+                android:textSize="18sp" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

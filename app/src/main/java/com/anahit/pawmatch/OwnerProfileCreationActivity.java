@@ -2,6 +2,7 @@ package com.anahit.pawmatch;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OwnerProfileCreationActivity extends AppCompatActivity {
+    private static final String TAG = "OwnerProfileCreation";
     private EditText ownerNameEditText, ownerAgeEditText;
     private Spinner ownerGenderSpinner;
     private Button saveOwnerProfileButton;
@@ -50,6 +52,7 @@ public class OwnerProfileCreationActivity extends AppCompatActivity {
 
         if (name.isEmpty() || ageStr.isEmpty() || gender.equals("Select Gender")) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "Validation failed: Empty fields or invalid gender selection");
             return;
         }
 
@@ -58,23 +61,33 @@ public class OwnerProfileCreationActivity extends AppCompatActivity {
             age = Integer.parseInt(ageStr);
         } catch (NumberFormatException e) {
             Toast.makeText(this, "Please enter a valid age", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "Validation failed: Invalid age format - " + e.getMessage());
             return;
         }
 
         String userId = mAuth.getCurrentUser().getUid();
+        if (userId == null) {
+            Toast.makeText(this, "User not authenticated", Toast.LENGTH_LONG).show();
+            Log.e(TAG, "User not authenticated: userId is null");
+            return;
+        }
 
         Map<String, Object> ownerData = new HashMap<>();
         ownerData.put("name", name);
         ownerData.put("age", age);
         ownerData.put("gender", gender);
 
+        Log.d(TAG, "Attempting to save owner data for userId: " + userId);
         mDatabase.child("users").child(userId).setValue(ownerData)
                 .addOnSuccessListener(aVoid -> {
+                    Log.d(TAG, "Owner profile saved successfully for userId: " + userId);
                     Toast.makeText(OwnerProfileCreationActivity.this, "Owner profile saved", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(OwnerProfileCreationActivity.this, PetProfileCreationActivity.class));
+                    Intent intent = new Intent(OwnerProfileCreationActivity.this, PetProfileCreationActivity.class);
+                    startActivity(intent);
                     finish();
                 })
                 .addOnFailureListener(e -> {
+                    Log.e(TAG, "Failed to save owner profile: " + e.getMessage(), e);
                     Toast.makeText(OwnerProfileCreationActivity.this, "Failed to save profile: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
     }

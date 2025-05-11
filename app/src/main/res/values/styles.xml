@@ -1,13 +1,10 @@
 <resources>
-    <!-- Base app theme -->
-    <style name="Theme.Pawmatch" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your app theme here -->
+    <style name="Base.Theme.Pawmatch" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryDark">@color/purple_700</item>
         <item name="colorAccent">@color/teal_200</item>
     </style>
-
-    <!-- Splash screen theme -->
+    <style name="Theme.Pawmatch" parent="Base.Theme.Pawmatch" />
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/splash_background</item>
         <item name="android:statusBarColor">@color/splash_background</item>

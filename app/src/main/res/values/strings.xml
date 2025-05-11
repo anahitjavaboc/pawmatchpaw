@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">pawmatch</string>
+    <string name="app_name">PawMatch</string>
+    <string name="welcome_to_pawmatch">Welcome to PawMatch</string>
+    <string name="logout_button">Logout</string>
+    <string name="login_to_pawmatch">Login to PawMatch</string>
 </resources>

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="center"
-    android:background="#FF8243">
+    android:background="#FFFFFF">
 
     <ImageView
         android:layout_width="120dp"
@@ -73,12 +73,15 @@
         android:id="@+id/signUpButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cornerRadius="6dp"
+        android:backgroundTint="@color/splash_background"
         android:minHeight="48dp"
         android:padding="12dp"
-        android:layout_marginBottom="16dp"
         android:text="Sign Up"
-        android:backgroundTint="@android:color/black"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/white" />
+
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/backToSignInButton"
@@ -88,7 +91,7 @@
         android:padding="8dp"
         android:text="Already have an account? Sign In"
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:textColor="#FFFFFF" />
+        android:textColor="@color/black" />
 
     <ProgressBar
         android:id="@+id/progressBar"

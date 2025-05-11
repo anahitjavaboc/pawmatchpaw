@@ -1,4 +1,3 @@
-// app/build.gradle.kts
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
@@ -21,7 +20,7 @@ android {
     buildTypes {
         named("debug") {
             isMinifyEnabled = false
-            isDebuggable = true // Ensures BuildConfig.DEBUG is generated
+            isDebuggable = true
         }
         named("release") {
             isMinifyEnabled = false
@@ -59,7 +58,8 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
-    implementation("com.yuyakaido.android:card-stack-view:2.3.4") // Preserved for card-stack-view
+    // Updated card-stack-view to latest via JitPack (check GitHub for latest commit or version)
+    implementation("com.github.yuyakaido:CardStackView:2.3.4") // Use latest version or commit hash if needed
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     implementation("com.google.firebase:firebase-firestore")
     implementation("androidx.core:core-ktx:1.13.1")

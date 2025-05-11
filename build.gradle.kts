@@ -1,4 +1,3 @@
-// build.gradle.kts (project-level)
 plugins {
     id("com.android.application") version "8.3.2" apply false
     id("com.android.library") version "8.3.2" apply false
@@ -7,4 +6,12 @@ plugins {
 
 tasks.register<Delete>("clean") {
     delete(layout.buildDirectory)
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+    }
 }

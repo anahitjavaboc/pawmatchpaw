@@ -2,5 +2,27 @@
     <string name="app_name">PawMatch</string>
     <string name="welcome_to_pawmatch">Welcome to PawMatch</string>
     <string name="logout_button">Logout</string>
+    <string name="todo">TODO</string>
+    <string name="upload_pet_photo">Upload Pet Photo</string>
+    <string name="pet_name">Pet Name</string>
+    <string name="enter_your_pet_s_name">Enter your pet\'s name</string>
+    <string name="pet_profile_image_description">Pet profile image</string>
+    <string name="pet_age">Pet Age</string>
+    <string name="enter_your_pet_s_age">Enter your pet\'s age</string>
+    <string name="pet_breed">Pet Breed</string>
+    <string name="enter_your_pet_s_breed">Enter your pet\'s breed</string>
+    <string name="pet_bio">Short Bio</string>
+    <string name="write_a_short_bio_about_your_pet">Write a short bio about your pet</string>
+    <string name="save_profile">Save Profile</string>
+    <string name="save_and_continue">Save and Continue</string>
+    <string name="your_gender">Your Gender</string>
+    <string name="enter_your_age">Enter your age</string>
+    <string name="your_age">Your Age</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="your_name">Your Name</string>
     <string name="login_to_pawmatch">Login to PawMatch</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
+
 </resources>

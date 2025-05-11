@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="32dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+            android:layout_gravity="center">
+
+            <!-- Pet Profile Image -->
+            <ImageView
+                android:id="@+id/petImageView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:contentDescription="@string/pet_profile_image_description"
+                android:src="@drawable/ic_pet_placeholder"
+                android:scaleType="centerCrop"
+                android:background="@android:color/darker_gray"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Upload Button -->
+            <Button
+                android:id="@+id/uploadImageButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/upload_pet_photo"
+                android:backgroundTint="@color/splash_background"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="16dp"
+                android:textSize="18sp" />
+
+            <!-- Pet Name -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pet_name"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/petNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:autofillHints=""
+                android:hint="@string/enter_your_pet_s_name"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Pet Age -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pet_age"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/petAgeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:hint="@string/enter_your_pet_s_age"
+                android:inputType="number"
+                android:imeOptions="actionNext"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Pet Breed -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pet_breed"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/petBreedEditText"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:hint="@string/enter_your_pet_s_breed"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Pet Bio -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pet_bio"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/petBioEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/write_a_short_bio_about_your_pet"
+                android:minLines="5"
+                android:maxLines="7"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Save Profile Button -->
+            <Button
+                android:id="@+id/saveProfileButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save_profile"
+                android:backgroundTint="@color/splash_background"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

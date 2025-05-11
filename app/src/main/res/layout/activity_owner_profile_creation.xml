@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="32dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <!-- Owner Name -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/your_name"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/ownerNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:hint="@string/enter_your_name"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Owner Age -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/your_age"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/ownerAgeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:hint="@string/enter_your_age"
+                android:inputType="number"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Owner Gender -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/your_gender"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/ownerGenderSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Save Owner Profile Button -->
+            <Button
+                android:id="@+id/saveOwnerProfileButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save_and_continue"
+                android:backgroundTint="@color/splash_background"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

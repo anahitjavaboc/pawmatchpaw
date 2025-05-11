@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -30,9 +33,13 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".OwnerProfileCreationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PetProfileCreationActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
-
     </application>
-
 </manifest>

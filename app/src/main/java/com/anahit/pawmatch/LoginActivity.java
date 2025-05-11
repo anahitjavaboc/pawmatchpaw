@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         if (BuildConfig.DEBUG) {
-            auth.useEmulator("10.0.2.2", 9099);
+            auth.useEmulator("10.0.2.2", 9099); // Emulator for local testing
         }
 
         emailEditText = findViewById(R.id.emailEditText);
@@ -61,7 +61,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             if (auth.getCurrentUser() != null && auth.getCurrentUser().isEmailVerified()) {
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                // Redirect to OwnerProfileCreationActivity instead of MainActivity
+                                startActivity(new Intent(LoginActivity.this, OwnerProfileCreationActivity.class));
                                 finish();
                             } else {
                                 Toast.makeText(LoginActivity.this, "Please verify your email", Toast.LENGTH_SHORT).show();

@@ -1,4 +1,3 @@
-// settings.gradle.kts
 pluginManagement {
     repositories {
         google {
@@ -14,11 +13,12 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
         mavenLocal() // Added as a fallback
-        maven { url = uri("https://jitpack.io") } // Preserved for card-stack-view
+        maven { url = uri("https://jitpack.io") } // For CardStackView
     }
 }
 

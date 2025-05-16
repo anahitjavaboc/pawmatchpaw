@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
+    id("org.jetbrains.kotlin.android") version "2.0.0" apply false
 }
 
 android {
@@ -16,20 +17,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        debug {
-            isMinifyEnabled = false
-            isDebuggable = true
-        }
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -37,12 +24,6 @@ android {
 
     buildFeatures {
         viewBinding = true
-    }
-}
-
-configurations.all {
-    resolutionStrategy.eachDependency {
-        println("Resolving dependency: ${requested.group}:${requested.name}:${requested.version}")
     }
 }
 
@@ -54,7 +35,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-storage")
-    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-analytics")
 
     // Core Android dependencies
     implementation("androidx.appcompat:appcompat:1.7.0")
@@ -63,7 +44,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.13.1")
 
     // UI & Graphics libraries
-    implementation("com.google.android.material:material:1.12.0")
+    implementation("com.google.android.material:material:1.13.0-alpha13")
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // CardStackView for swipeable pet matching UI

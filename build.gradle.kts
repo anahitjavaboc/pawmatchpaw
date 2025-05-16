@@ -7,11 +7,3 @@ plugins {
 tasks.register<Delete>("clean") {
     delete(layout.buildDirectory)
 }
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url = uri("https://jitpack.io") }
-    }
-}

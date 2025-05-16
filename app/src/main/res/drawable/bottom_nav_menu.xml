@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_swipe"
+        android:title="Swipe"
+        android:icon="@android:drawable/ic_menu_search" />
+    <item
+        android:id="@+id/nav_messages"
+        android:title="Messages"
+        android:icon="@android:drawable/ic_menu_send" />
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Profile"
+        android:icon="@android:drawable/ic_menu_manage" />
+</menu>

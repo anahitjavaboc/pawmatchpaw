@@ -4,14 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.anahit.pawmatch.R;
 import com.anahit.pawmatch.models.Pet;
 import com.anahit.pawmatch.models.User;
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,81 +21,70 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileFragment extends Fragment {
 
-    private EditText userNameEdit, petNameEdit, petAgeEdit, petGenderEdit;
-    private TextView userEmailText;
-    private Button saveButton;
-    private DatabaseReference database;
-    private User user;
-    private Pet pet;
+    private ImageView petImageView;
+    private TextView petNameTextView, petInfoTextView, ownerNameTextView;
+    private DatabaseReference petsRef;
+    private DatabaseReference usersRef;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        userNameEdit = view.findViewById(R.id.user_name_edit);
-        userEmailText = view.findViewById(R.id.user_email_text);
-        petNameEdit = view.findViewById(R.id.pet_name_edit);
-        petAgeEdit = view.findViewById(R.id.pet_age_edit);
-        petGenderEdit = view.findViewById(R.id.pet_gender_edit);
-        saveButton = view.findViewById(R.id.save_button);
+        petImageView = view.findViewById(R.id.profile_pet_image);
+        petNameTextView = view.findViewById(R.id.profile_pet_name);
+        petInfoTextView = view.findViewById(R.id.profile_pet_info);
+        ownerNameTextView = view.findViewById(R.id.profile_owner_name);
 
-        database = FirebaseDatabase.getInstance().getReference();
-        loadUserProfile();
-        loadPetProfile();
+        petsRef = FirebaseDatabase.getInstance().getReference("pets");
+        usersRef = FirebaseDatabase.getInstance().getReference("users");
 
-        saveButton.setOnClickListener(v -> saveProfile());
+        loadProfileData();
 
         return view;
     }
 
-    private void loadUserProfile() {
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        database.child("users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+    private void loadProfileData() {
+        String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        // Load user data
+        usersRef.child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                user = snapshot.getValue(User.class);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
                 if (user != null) {
-                    userNameEdit.setText(user.name);
-                    userEmailText.setText(user.email);
+                    ownerNameTextView.setText(user.getName());
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
-    }
 
-    private void loadPetProfile() {
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        database.child("pets").orderByChild("ownerId").equalTo(userId)
+        // Load pet data
+        petsRef.orderByChild("ownerId").equalTo(currentUserId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        for (DataSnapshot data : snapshot.getChildren()) {
-                            pet = data.getValue(Pet.class);
-                            petNameEdit.setText(pet.name);
-                            petAgeEdit.setText(String.valueOf(pet.age));
-                            petGenderEdit.setText(pet.gender);
-                            break;
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot petSnapshot : snapshot.getChildren()) {
+                            Pet pet = petSnapshot.getValue(Pet.class);
+                            if (pet != null) {
+                                petNameTextView.setText(pet.getName());
+                                petInfoTextView.setText(pet.getAge() + " years, " + pet.getBreed());
+                                if (pet.getImageUrl() != null && !pet.getImageUrl().isEmpty()) {
+                                    Glide.with(requireContext())
+                                            .load(pet.getImageUrl())
+                                            .placeholder(R.drawable.ic_pet_placeholder)
+                                            .into(petImageView);
+                                } else {
+                                    petImageView.setImageResource(R.drawable.ic_pet_placeholder);
+                                }
+                                break; // Display the first pet
+                            }
                         }
                     }
 
                     @Override
-                    public void onCancelled(DatabaseError error) {}
-                });
-    }
-
-    private void saveProfile() {
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        user.name = userNameEdit.getText().toString();
-        pet.name = petNameEdit.getText().toString();
-        pet.age = Integer.parseInt(petAgeEdit.getText().toString());
-        pet.gender = petGenderEdit.getText().toString();
-
-        database.child("users").child(userId).setValue(user);
-        database.child("pets").child(pet.id).setValue(pet)
-                .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(getContext(), "Profile updated", Toast.LENGTH_SHORT).show();
+                    public void onCancelled(@NonNull DatabaseError error) {}
                 });
     }
 }

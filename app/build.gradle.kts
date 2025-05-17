@@ -7,6 +7,7 @@ plugins {
 android {
     namespace = "com.anahit.pawmatch"
     compileSdk = 35
+    buildToolsVersion = "35.0.0" // Added to fix SDK XML version warning
 
     defaultConfig {
         applicationId = "com.anahit.pawmatch"
@@ -24,7 +25,9 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true // Enabled for BuildConfig fields
     }
+
     buildTypes {
         debug {
             isMinifyEnabled = false
@@ -67,7 +70,9 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // CardStackView for swipeable pet matching UI
-    implementation("com.github.yuyakaido:CardStackView:2.3.4")
+
+
+    implementation("com.github.yuyakaido:cardstackview:2.3.4")
 
     // Coroutines for async operations
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
@@ -79,4 +84,6 @@ dependencies {
 
     // Cloudinary for image storage
     implementation("com.cloudinary:cloudinary-android:2.5.0")
+    implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.annotation:annotation:1.8.0")
 }

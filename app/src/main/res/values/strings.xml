@@ -1,4 +1,5 @@
 <resources>
+    <!-- Existing strings -->
     <string name="app_name">PawMatch</string>
     <string name="welcome_to_pawmatch">Welcome to PawMatch</string>
     <string name="logout_button">Logout</string>
@@ -31,14 +32,23 @@
     <string name="owner_age">Owner Age</string>
     <string name="owner_gender">Owner Gender</string>
     <string name="gender_options">Select Gender</string>
-    <string-array name="gender_options">
-        <item>Select Gender</item>
-        <item>Male</item>
-        <item>Female</item>
-        <item>Other</item>
-    </string-array>
-        <!-- Existing strings -->
     <string name="chat_messages_list_description">List of chat messages</string>
     <string name="type_message_hint">Type a message</string>
     <string name="send_button_label">Send</string>
+    <string name="save">Save</string>
+    <string name="enter_your_pet_s_gender">Enter your pet\'s gender</string>
+    <string name="swipeable_pet_cards">Swipeable pet cards</string>
+    <string name="pet_card_description">Pet card with name, age, and gender</string>
+    <string name="pet_name_description">Pet name</string>
+    <string name="pet_age_description">Pet age</string>
+    <string name="pet_gender_description">Pet gender</string>
+
+    <!-- Added for menu items -->
+    <string name="reload">Reload Pets</string>
+    <string name="add_spot_to_first">Add Pet to First</string>
+    <string name="add_spot_to_last">Add Pet to Last</string>
+    <string name="remove_spot_from_first">Remove Pet from First</string>
+    <string name="remove_spot_from_last">Remove Pet from Last</string>
+    <string name="replace_first_spot">Replace First Pet</string>
+    <string name="swap_first_for_last">Swap First and Last Pet</string>
 </resources>

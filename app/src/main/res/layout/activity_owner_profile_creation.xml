@@ -23,11 +23,36 @@
             android:paddingHorizontal="16dp"
             android:layout_gravity="center">
 
+            <!-- Owner Profile Image -->
+            <ImageView
+                android:id="@+id/ownerImageView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:contentDescription="@string/owner_profile_image_description"
+                android:src="@drawable/ic_owner_placeholder"
+                android:scaleType="centerCrop"
+                android:background="@android:color/darker_gray"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Upload Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/uploadOwnerImageButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cornerRadius="6dp"
+                android:backgroundTint="@color/splash_background"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:text="@string/upload_owner_photo"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
             <!-- Owner Name -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Owner Name"
+                android:text="@string/owner_name"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_marginBottom="8dp" />
@@ -46,7 +71,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Owner Age"
+                android:text="@string/owner_age"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_marginBottom="8dp" />
@@ -65,7 +90,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Owner Gender"
+                android:text="@string/owner_gender"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_marginBottom="8dp" />

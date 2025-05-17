@@ -25,5 +25,20 @@
     <string name="password">Password</string>
     <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign Up</string>
     <string name="login">Login</string>
-
+    <string name="owner_profile_image_description">Owner Profile Image</string>
+    <string name="upload_owner_photo">Upload Owner Photo</string>
+    <string name="owner_name">Owner Name</string>
+    <string name="owner_age">Owner Age</string>
+    <string name="owner_gender">Owner Gender</string>
+    <string name="gender_options">Select Gender</string>
+    <string-array name="gender_options">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+        <!-- Existing strings -->
+    <string name="chat_messages_list_description">List of chat messages</string>
+    <string name="type_message_hint">Type a message</string>
+    <string name="send_button_label">Send</string>
 </resources>

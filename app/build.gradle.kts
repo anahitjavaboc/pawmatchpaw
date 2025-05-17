@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
-    id("org.jetbrains.kotlin.android") version "2.0.0" apply false
+    id("org.jetbrains.kotlin.android") version "2.0.20" apply false
 }
 
 android {
@@ -25,11 +25,30 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    buildTypes {
+        debug {
+            isMinifyEnabled = false
+            isDebuggable = true
+            buildConfigField("String", "CLOUDINARY_CLOUD_NAME", "\"${project.property("CLOUDINARY_CLOUD_NAME")}\"")
+            buildConfigField("String", "CLOUDINARY_API_KEY", "\"${project.property("CLOUDINARY_API_KEY")}\"")
+            buildConfigField("String", "CLOUDINARY_API_SECRET", "\"${project.property("CLOUDINARY_API_SECRET")}\"")
+        }
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+            buildConfigField("String", "CLOUDINARY_CLOUD_NAME", "\"${project.property("CLOUDINARY_CLOUD_NAME")}\"")
+            buildConfigField("String", "CLOUDINARY_API_KEY", "\"${project.property("CLOUDINARY_API_KEY")}\"")
+            buildConfigField("String", "CLOUDINARY_API_SECRET", "\"${project.property("CLOUDINARY_API_SECRET")}\"")
+        }
+    }
 }
 
 dependencies {
     // Firebase BOM for consistent versions
-    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
+    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
 
     // Firebase dependencies
     implementation("com.google.firebase:firebase-auth")
@@ -40,8 +59,8 @@ dependencies {
     // Core Android dependencies
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.activity:activity:1.9.3")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+    implementation("androidx.core:core-ktx:1.16.0")
 
     // UI & Graphics libraries
     implementation("com.google.android.material:material:1.13.0-alpha13")

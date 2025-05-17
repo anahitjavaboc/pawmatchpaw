@@ -3,32 +3,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/message_recycler_view"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:contentDescription="@string/chat_messages_list_description"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp">
+        android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/message_input"
+            android:id="@+id/messageInput"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:layout_weight="1"
-            android:hint="Type a message" />
+            android:hint="@string/type_message_hint"
+            android:imeOptions="actionSend"
+            android:inputType="text" />
 
         <Button
-            android:id="@+id/send_button"
+            android:id="@+id/sendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send" />
+            android:text="@string/send_button_label" />
 
     </LinearLayout>
 </LinearLayout>

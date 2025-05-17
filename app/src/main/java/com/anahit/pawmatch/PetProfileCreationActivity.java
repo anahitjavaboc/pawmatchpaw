@@ -13,10 +13,12 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.anahit.pawmatch.models.Pet;
 import com.bumptech.glide.Glide;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -58,12 +60,19 @@ public class PetProfileCreationActivity extends AppCompatActivity {
         // Initialize Firebase Database
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        // Get ownerId from intent
-        ownerId = getIntent().getStringExtra("ownerId");
-        if (ownerId == null) {
-            Toast.makeText(this, "Error: Owner ID not provided", Toast.LENGTH_SHORT).show();
+        // Get ownerId from Firebase Authentication
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() == null) {
+            Toast.makeText(this, "Error: User not authenticated", Toast.LENGTH_SHORT).show();
             finish();
             return;
+        }
+        ownerId = auth.getCurrentUser().getUid();
+
+        // Check ownerId from intent (for consistency with previous implementation)
+        String intentOwnerId = getIntent().getStringExtra("ownerId");
+        if (intentOwnerId != null && !intentOwnerId.equals(ownerId)) {
+            Log.w(TAG, "Owner ID from intent (" + intentOwnerId + ") does not match authenticated user (" + ownerId + ")");
         }
 
         // Initialize views
@@ -154,24 +163,22 @@ public class PetProfileCreationActivity extends AppCompatActivity {
     }
 
     private void savePetToFirebase(String petId, String petName, int petAge, String petBreed, String petBio) {
-        Map<String, Object> petData = new HashMap<>();
-        petData.put("petId", petId);
-        petData.put("ownerId", ownerId);
-        petData.put("name", petName);
-        petData.put("age", petAge);
-        petData.put("breed", petBreed);
-        petData.put("bio", petBio);
-        petData.put("imageUrl", imageUrl);
+        // Use Pet model for consistency with previous implementation
+        Pet pet = new Pet(petName, petAge, petBreed, ownerId);
+        pet.setId(petId);
+        pet.setBio(petBio);
+        pet.setImageUrl(imageUrl);
 
         // Save pet under owner's node and global pets node
         databaseReference.child("users").child(ownerId).child("pets").child(petId).setValue(petId)
                 .addOnSuccessListener(aVoid -> {
-                    databaseReference.child("pets").child(petId).setValue(petData)
+                    databaseReference.child("pets").child(petId).setValue(pet)
                             .addOnSuccessListener(aVoid2 -> {
                                 Log.d(TAG, "Pet profile saved to Firebase successfully");
                                 Toast.makeText(this, "Pet profile saved!", Toast.LENGTH_SHORT).show();
-                                // Navigate to MainActivity (or your next screen)
+                                // Navigate to MainActivity and clear back stack
                                 Intent intent = new Intent(PetProfileCreationActivity.this, MainActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                                 finish();
                             })

@@ -15,7 +15,7 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/chat_room_pet_image"
+            android:id="@+id/match_pet_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:scaleType="centerCrop"
@@ -30,7 +30,7 @@
             android:layout_marginStart="16dp">
 
             <TextView
-                android:id="@+id/chat_room_pet_name"
+                android:id="@+id/match_pet_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pet Name"
@@ -39,7 +39,7 @@
                 android:textColor="#FF6F61" />
 
             <TextView
-                android:id="@+id/chat_room_owner_name"
+                android:id="@+id/match_owner_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Owner Name"

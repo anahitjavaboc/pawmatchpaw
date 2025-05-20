@@ -17,10 +17,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        mavenLocal() // Added as a fallback
         maven { url = uri("https://jitpack.io") } // For CardStackView
     }
 }
 
 rootProject.name = "pawmatch"
 include(":app")
+// Remove :cardstackview and :sample unless building from source
+// include(":cardstackview")
+// include(":sample")

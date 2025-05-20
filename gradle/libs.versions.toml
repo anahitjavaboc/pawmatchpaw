@@ -3,7 +3,7 @@ android-gradle-plugin = "8.3.0"
 google-gms-google-services = "4.4.2"
 firebase-bom = "33.13.0"
 appcompat = "1.7.0"
-material = "1.13.0-alpha13"
+material = "1.12.0" # Changed from 1.13.0-alpha13 to stable 1.12.0
 activity = "1.9.3"
 constraintlayout = "2.2.1"
 junit = "4.13.2"
@@ -15,6 +15,8 @@ glide = "4.16.0"
 firebase-auth = "23.2.0"
 coroutines-android = "1.9.0"
 kotlin = "2.0.20"
+cardview = "1.0.0" # Added for catalog
+annotation = "1.8.0" # Added for catalog
 
 [libraries]
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -30,10 +32,12 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database" }
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
-card-stack-view = { group = "com.github.yuyakaido", name = "CardStackView", version.ref = "card-stack-view" }
+card-stack-view = { group = "com.github.yuyakaido", name = "cardstackview", version.ref = "card-stack-view" } # Fixed artifact name
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines-android" }
 cloudinary-android = { group = "com.cloudinary", name = "cloudinary-android", version = "2.5.0" }
+cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" } # Added
+annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" } # Added
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }

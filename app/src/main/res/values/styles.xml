@@ -1,12 +1,20 @@
 <resources>
+    <!-- Base Theme -->
     <style name="Base.Theme.Pawmatch" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryDark">@color/purple_700</item>
         <item name="colorAccent">@color/teal_200</item>
     </style>
-    <style name="Theme.Pawmatch" parent="Base.Theme.Pawmatch" />
+
+    <!-- Main App Theme -->
+    <style name="Theme.Pawmatch" parent="Base.Theme.Pawmatch">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+    <!-- Splash Screen Theme -->
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/splash_background</item>
+        <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="android:statusBarColor">@color/splash_background</item>
     </style>
 </resources>

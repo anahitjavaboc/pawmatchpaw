@@ -1,13 +1,13 @@
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
-    id("org.jetbrains.kotlin.android") version "2.0.20" apply false
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
     namespace = "com.anahit.pawmatch"
     compileSdk = 35
-    buildToolsVersion = "35.0.0" // Added to fix SDK XML version warning
+    buildToolsVersion = "35.0.0"
 
     defaultConfig {
         applicationId = "com.anahit.pawmatch"
@@ -25,7 +25,7 @@ android {
 
     buildFeatures {
         viewBinding = true
-        buildConfig = true // Enabled for BuildConfig fields
+        buildConfig = true
     }
 
     buildTypes {
@@ -54,10 +54,10 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
 
     // Firebase dependencies
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-database")
-    implementation("com.google.firebase:firebase-storage")
-    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth:23.2.0")
+    implementation("com.google.firebase:firebase-database:21.0.0")
+    implementation("com.google.firebase:firebase-storage:21.0.0")
+    implementation("com.google.firebase:firebase-analytics:22.0.0")
 
     // Core Android dependencies
     implementation("androidx.appcompat:appcompat:1.7.0")
@@ -66,24 +66,27 @@ dependencies {
     implementation("androidx.core:core-ktx:1.16.0")
 
     // UI & Graphics libraries
-    implementation("com.google.android.material:material:1.13.0-alpha13")
+    implementation("com.google.android.material:material:1.12.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // CardStackView for swipeable pet matching UI
-
-
     implementation("com.github.yuyakaido:cardstackview:2.3.4")
 
     // Coroutines for async operations
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
 
+    // CardView and Annotation support
+    implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.annotation:annotation:1.8.0")
+
+    // Cloudinary for image storage
+    implementation("com.cloudinary:cloudinary-android:2.5.0")
+
+    // Kotlin standard library
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${project.property("kotlin_version")}")
+
     // Testing dependencies
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
-
-    // Cloudinary for image storage
-    implementation("com.cloudinary:cloudinary-android:2.5.0")
-    implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.annotation:annotation:1.8.0")
 }

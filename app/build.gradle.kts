@@ -66,12 +66,11 @@ dependencies {
     implementation("androidx.core:core-ktx:1.16.0")
 
     // UI & Graphics libraries
-    implementation("com.google.android.material:material:1.12.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // CardStackView for swipeable pet matching UI
     implementation("com.github.yuyakaido:cardstackview:2.3.4")
-
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     // Coroutines for async operations
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
 

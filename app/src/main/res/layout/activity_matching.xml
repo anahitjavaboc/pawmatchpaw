@@ -8,6 +8,7 @@
         android:id="@+id/card_stack_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:contentDescription="Swipe to browse pet profiles"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
